@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>X64HUB</title>
+</head>
+<body>
+    <div id="app" class="hidden">
+        <div class="hud-panel" id="panel">
+            <div class="hud-header" id="header">
+                <div class="hud-brand">
+                    <span class="hud-logo">X64</span>
+                    <span class="hud-version">HUB</span>
+                </div>
+                <div class="hud-status" id="status">
+                    <span class="status-dot" id="dot"></span>
+                    <span class="status-text" id="statusText">Conectando...</span>
+                </div>
+            </div>
+            <div class="hud-body" id="body">
+                <div class="hud-info">
+                    <div class="info-row">
+                        <span class="info-label">Servidor</span>
+                        <span class="info-value" id="serverName">---</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Jugadores</span>
+                        <span class="info-value" id="playerCount">0 / 0</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Whitelist</span>
+                        <span class="info-value" id="whitelistStatus">---</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Mi ID</span>
+                        <span class="info-value" id="playerId">---</span>
+                    </div>
+                </div>
+                <div class="hud-footer">
+                    <button class="hud-btn" id="btnPortal">Abrir Portal</button>
+                    <button class="hud-btn hud-btn-secondary" id="btnClose">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

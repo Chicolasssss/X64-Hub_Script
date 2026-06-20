@@ -4,7 +4,10 @@ author "X64HUB"
 description "Integración con X64HUB - Panel de administración y métricas"
 version "1.0.0"
 
-shared_script "config.lua"
+shared_scripts {
+    "locales.lua",
+    "config.lua"
+}
 
 client_script "client.lua"
 

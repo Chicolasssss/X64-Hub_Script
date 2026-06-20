@@ -9,13 +9,13 @@ AddEventHandler("onResourceStart", function(name)
     if not Config._configured then
         print("")
         print("^1[X64HUB]^7 =================================")
-        print("^1[X64HUB]  ❌ NO CONFIGURADO^7")
+        print("^1[X64HUB]  " .. _U('not_configured') .. "^7")
         print("^1[X64HUB]^7 =================================")
-        print("^1[X64HUB]^7 Entra al juego y ejecuta:")
+        print("^1[X64HUB]^7 " .. _U('enter_game_exec'))
         print("^1[X64HUB]^7   /x64setup <ServerId> <WebhookSecret> [slug]^7")
-        print("^1[X64HUB]^7 Los datos están en:")
+        print("^1[X64HUB]^7 " .. _U('data_at'))
         print("^1[X64HUB]^7   https://x64hub.com/s/[slug]/dashboard/configuracion^7")
-        print("^1[X64HUB]^7 Luego escribe: restart x64-hub^7")
+        print("^1[X64HUB]^7 " .. _U('then_type_restart'))
         print("^1[X64HUB]^7 =================================^7")
         print("")
         return
@@ -40,14 +40,14 @@ AddEventHandler("onResourceStart", function(name)
 
     print("")
     print("^4[X64HUB]^7 =================================")
-    print("^4[X64HUB]^7 ✅ Conectando a " .. Config.ApiUrl)
+    print("^4[X64HUB]^7 " .. _U('connecting_to') .. Config.ApiUrl)
     print("^4[X64HUB]^7    Server ID: " .. Config.ServerId)
     print("^4[X64HUB]^7    Slug: " .. (Config.ServerSlug or Config.ServerId))
-    print("^4[X64HUB]^7    Plan: ^5" .. Config.ServerPlan .. "^7")
-    print("^4[X64HUB]^7    Whitelist: " .. (Config.EnableWhitelist and "^2SI^7" or "^1NO^7"))
-    print("^4[X64HUB]^7    Sanciones: " .. (Config.EnableSanctions and "^2SI^7" or "^1NO^7"))
-    print("^4[X64HUB]^7    Player Sync: " .. (Config.EnablePlayerSync and "^2SI^7" or "^1NO^7"))
-    print("^4[X64HUB]^7    Comando: /" .. (Config.Command or "x64"))
+    print("^4[X64HUB]^7    " .. _U('plan') .. " ^5" .. Config.ServerPlan .. "^7")
+    print("^4[X64HUB]^7    Whitelist: " .. (Config.EnableWhitelist and "^2" .. _U('yes') .. "^7" or "^1" .. _U('no') .. "^7"))
+    print("^4[X64HUB]^7    Sanciones: " .. (Config.EnableSanctions and "^2" .. _U('yes') .. "^7" or "^1" .. _U('no') .. "^7"))
+    print("^4[X64HUB]^7    Player Sync: " .. (Config.EnablePlayerSync and "^2" .. _U('yes') .. "^7" or "^1" .. _U('no') .. "^7"))
+    print("^4[X64HUB]^7    " .. _U('cmd') .. " /" .. (Config.Command or "x64"))
     print("^4[X64HUB]^7 =================================")
     print("")
 
@@ -97,7 +97,7 @@ AddEventHandler("x64hub:checkWhitelistClient", function()
         TriggerClientEvent("x64hub:whitelistResult", src, {
             whitelisted = false,
             status = "no_discord",
-            error = "No se pudo obtener tu ID de Discord"
+            error = _U('no_discord_id')
         })
         return
     end

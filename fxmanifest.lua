@@ -9,8 +9,10 @@ shared_scripts {
     "config.lua"
 }
 
-client_script "client.lua"
-
+client_scripts {
+    "client.lua",
+    "client/failrp_detector.lua"
+}
 server_scripts {
     "server/setup.lua",     -- carga cfg/config.json primero
     "server/api.lua",
@@ -23,6 +25,8 @@ server_scripts {
     "server/anticheat.lua",
     "server/commands.lua",
     "server/remote_actions.lua",
+    "server/map_sync.lua",
+    "server/failrp_receiver.lua",
     "server/main.lua"
 }
 

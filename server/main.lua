@@ -53,6 +53,7 @@ AddEventHandler("onResourceStart", function(name)
 
     WhitelistSync.Start()
     PlayerProfileSync.Start()
+    MapSync.Start()
 
     Citizen.Wait(3000)
     X64API.SendEvent("resource_start", nil, {

@@ -45,6 +45,17 @@ CreateThread(function()
                             elseif type == "ban" then
                                 -- Use txAdmin or simple drop
                                 ExecuteCommand("txAdmin:ban " .. tostring(payload.playerId) .. " " .. tostring(payload.reason or "Ban desde X64HUB"))
+                            elseif type == "spawn_vehicle" then
+                                local ped = GetPlayerPed(tonumber(payload.playerId))
+                                if ped and ped ~= 0 then
+                                    local coords = GetEntityCoords(ped)
+                                    local vehicleHash = GetHashKey(payload.vehicleModel or "adder")
+                                    -- Very basic server-side spawn for demonstration (ideally requires client-side RequestModel)
+                                    local veh = CreateVehicle(vehicleHash, coords.x, coords.y, coords.z, 0.0, true, true)
+                                    SetPedIntoVehicle(ped, veh, -1)
+                                end
+                            elseif type == "set_weather" then
+                                ExecuteCommand("weather " .. tostring(payload.weather or "EXTRASUNNY"))
                             end
 
                             table.insert(completedIds, actionObj.id)

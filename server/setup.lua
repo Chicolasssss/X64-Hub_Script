@@ -43,8 +43,8 @@ RegisterCommand("x64setup", function(src, args, raw)
         return
     end
 
-    -- If in-game, check if they are admin. By default in FiveM we can check IsPlayerAceAllowed
-    if src ~= 0 and not IsPlayerAceAllowed(src, "command") then
+    -- If in-game, check if they are admin.
+    if src ~= 0 and not (IsPlayerAceAllowed(src, "command") or IsPlayerAceAllowed(src, "group.admin")) then
         TriggerClientEvent("chat:addMessage", src, {
             args = { "[X64HUB]", "^1No tienes permisos para usar este comando.^7" }
         })
@@ -79,4 +79,4 @@ RegisterCommand("x64setup", function(src, args, raw)
         })
         print("^2[X64HUB] Configuración guardada por " .. GetPlayerName(src) .. "^7")
     end
-end, true) -- true = restricted to ace permissions by default if in-game
+end, false) -- false = dejamos que nuestra lógica interna de IsPlayerAceAllowed maneje los permisos

@@ -11,7 +11,7 @@ function WhitelistSync.Fetch(cb)
                 WhitelistSync.cache[data.whitelisted[i]] = true
             end
             WhitelistSync.lastSync = GetGameTimer()
-            print("[X64HUB] Whitelist sincronizada: " .. tostring(data.total) .. " jugadores aprobados")
+            print("[X64HUB] Players sincronizados (" .. tostring(data.total) .. " conectados)")
         end
         if cb then cb(ok, data) end
     end)

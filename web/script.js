@@ -95,7 +95,7 @@ function show() {
 function hide() {
     visible = false;
     app.classList.add('hidden');
-    fetch('https://' + document.location.host + '/x64hub:closeUI', {
+    fetch('https://' + GetParentResourceName() + '/x64hub:closeUI', {
         method: 'POST',
         body: JSON.stringify({})
     }).catch(function() {});

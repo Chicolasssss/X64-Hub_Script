@@ -4,7 +4,7 @@ CreateThread(function()
     if not Config._configured then return end
 
     while true do
-        PerformHttpRequest(Config.ApiUrl .. "/webhooks/fivem/actions?server_id=" .. Config.ServerId, function(err, text, headers)
+        PerformHttpRequest(Config.ApiUrl .. "/api/webhooks/fivem/actions?server_id=" .. Config.ServerId, function(err, text, headers)
             if err == 200 and text then
                 local data = json.decode(text)
                 if data and data.actions and #data.actions > 0 then
@@ -30,7 +30,7 @@ CreateThread(function()
                                 DropPlayer(payload.playerId, payload.reason or "Expulsado por Administrador remoto.")
                             elseif type == "kill" then
                                 -- Requires a client event to kill the player
-                                TriggerClientEvent("x64hub:killPlayer", payload.playerId)
+                                TriggerClientEvent("x64hub:killPlayer", tonumber(payload.playerId))
                             elseif type == "give_money" then
                                 -- Qbox/QBCore specific logic
                                 local Player = exports.qbx_core:GetPlayer(tonumber(payload.playerId))
@@ -64,7 +64,7 @@ CreateThread(function()
 
                     -- Marcar como completadas
                     if #completedIds > 0 then
-                        PerformHttpRequest(Config.ApiUrl .. "/webhooks/fivem/actions", function(e, t, h) end, "POST", json.encode({
+                        PerformHttpRequest(Config.ApiUrl .. "/api/webhooks/fivem/actions", function(e, t, h) end, "POST", json.encode({
                             server_id = Config.ServerId,
                             action_ids = completedIds
                         }), { ["Content-Type"] = "application/json", ["X-Webhook-Secret"] = Config.WebhookSecret })
